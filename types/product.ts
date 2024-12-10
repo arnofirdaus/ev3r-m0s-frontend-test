@@ -5,4 +5,8 @@ export interface ProductType {
   price: number
   images: string
   variance: string
+  description: string
+  rating: number
+  stock: number
+  sold: number
 }

@@ -1,27 +1,40 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect, useState } from 'react'
 import styles from './Products.module.scss'
 import ProductCard from './components/Card'
 import { ProductType } from '@/types/product'
 
 const ProductsPage = () => {
-  const product: ProductType = {
-		id: 1,
-		title: "Laptop Asus",
-		price: 150000,
-		images: "https://picsum.photos/200",
-		variance: "electronic"
-	}
 
+  const [products, setProducts] = useState<ProductType[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+
+  const fetchProducts = async () => {
+    try {
+      const res = await fetch('https://my-json-server.typicode.com/arnofirdaus/items/products')
+      const data = await res.json()
+      setProducts(data)
+      setLoading(false)
+    } catch (error) {
+      console.error('Failed to fetch products:', error)
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {    
+    fetchProducts()
+  }, [])
+  
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>List of Products</h1>
       <div className={styles.grid}>
-        <ProductCard product={product} />
-        <ProductCard product={product} />
-        <ProductCard product={product} />
-        <ProductCard product={product} />
-        <ProductCard product={product} />
-        <ProductCard product={product} />
+        {
+          loading
+            ? <div className={styles.loader}><p>Loading products...</p></div>
+            : products.map((product) => <ProductCard product={product} key={product.id} />)
+        }
       </div>
     </div>
   )

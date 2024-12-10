@@ -14,10 +14,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className={styles.card}>
       <div className={styles.image}>
-        <Image src={product.images} alt={product.title} width={200} height={200} priority />
+        <Image 
+          src={product.images} 
+          alt={product.title} 
+          width={200} 
+          height={200}
+          loading="lazy"
+        />
       </div>
       <div className={styles.content}>
-        <h3 className={styles.title}>{product.title}</h3>
+        <div className={styles.container}>
+          <h3 className={styles.title}>{product.title}</h3>
+          <div className={styles.variance}>{product.variance}</div>
+        </div>
         <p className={styles.price}>{currencyFormat(product.price)}</p>
         <Link href={`products/${product.id}`} className={styles.button}>
           View Product
