@@ -1,0 +1,81 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.image {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 30px;
+  color: #0070f3;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.containerContent {
+  display: flex;
+
+  .content {
+    margin-left: 1rem;
+  }
+
+  .description {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  .price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+  }
+
+  .details {
+    display: flex;
+    gap: 0 1rem;
+    p {
+      font-size: 1.1rem;
+      margin: 5px 0;
+    }
+  }
+
+  .variance {
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 208, 0);
+    text-transform: capitalize;
+  }
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    .image {
+      width: 100%;
+    }
+
+    .content {
+      margin-left: 0;
+    }
+
+    .variance {
+      margin-top: 1rem;
+    }
+  }
+}
