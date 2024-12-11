@@ -4,7 +4,6 @@ import { useProductStore } from "@/store/products";
 
 export default function Header() {
   const setSearchProduct = useProductStore((state) => state.setSearchProduct);
-  const searchProduct = useProductStore((state) => state.searchProduct);
 
   const onChangeInput = (val: string) => {
     setSearchProduct(val);
