@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  sassOptions: {
+    silenceDeprecations: ['legacy-js-api'],
+  },
   images: {
     domains: ['picsum.photos'],
   }
