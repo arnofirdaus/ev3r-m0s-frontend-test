@@ -1,14 +1,14 @@
 .card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   padding: 16px;
   max-width: 300px;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transition: box-shadow 0.5s ease, transform 0.5s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--secondary);
+    transform: translateY(-5px);
   }
 
   .image {
@@ -29,15 +29,14 @@
 
     .title {
       font-size: 18px;
-      font-weight: 600;
-      color: #333;
+      color: var(--text-black-light);
     }
 
     .price {
       font-size: 22px;
       font-weight: 500;
-      color: #666;
-      margin-top: 18px;
+      color: var(--text-black);
+      margin-bottom: 18px;
     }
 
     .variance {
@@ -47,8 +46,8 @@
       padding: 5px;
       font-size: 12px;
       border-radius: 10px;
-      border: 1px solid rgb(255, 208, 0);
-      color: rgb(255, 208, 0);
+      border: 1px solid var(--secondary);
+      color: var(--secondary);
       text-transform: capitalize;
     }
 
@@ -64,11 +63,12 @@
       font-size: 14px;
       font-weight: 600;
       border: 1px solid #aaa;
+      transition: all 0.5s ease;
 
       &:hover {
-        background-color: rgb(255, 208, 0);
-        border-color: rgb(255, 208, 0);
-        transition: all 0.5s ease;
+        color: white;
+        background-color: var(--primary);
+        border-color: var(--primary);
       }
     }
   }

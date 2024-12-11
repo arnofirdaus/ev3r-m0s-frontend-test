@@ -4,6 +4,7 @@ import React from "react";
 import styles from "./ProductDetail.module.scss";
 import Link from "next/link";
 import { currencyFormat } from "@/utils/formatter";
+import { FaArrowLeftLong, FaStar } from "react-icons/fa6";
 
 async function fetchProductDetail(id: string): Promise<ProductType> {
   const res = await fetch(
@@ -28,7 +29,7 @@ const ProductDetailPage = async (props: {
     <div className={styles.container}>
       <div>
         <Link href="/products" className={styles.backLink}>
-          Back to Product List
+          <FaArrowLeftLong /> Back
         </Link>
         <h1 className={styles.heading}>{product.title}</h1>
       </div>
@@ -45,12 +46,13 @@ const ProductDetailPage = async (props: {
           <div className={styles.details}>
             <p>
               <strong>Rating:</strong> {product.rating}{" "}
+              <FaStar className={styles.starIcon} />
             </p>
             <p>
               <strong>Stock:</strong> {product.stock}
             </p>
             <p>
-              <strong>Sold:</strong> {product.sold} units
+              <strong>Sold:</strong> {product.sold}ad
             </p>
           </div>
           <p className={styles.price}>{currencyFormat(product.price)}</p>

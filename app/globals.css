@@ -1,10 +1,18 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #F72C5B;
+  --primary-light: #FF748B;
+  --secondary: #A7D477;
+  --secondary-light: #E4F1AC;
+  --text-black: #333333;
+  --text-black-light: #666666;
 }
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  padding: 0;
+  margin: 0;
 }
