@@ -1,0 +1,45 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    text-align: center;
+    color: var(--text-black);
+  }
+
+  .searchInput {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    width: 250px;
+    border-radius: 4px;
+    display: flex;
+
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+    .icon {
+      color: grey;
+      margin: 0 5px;
+    }
+
+    &:focus-within {
+      outline: none !important;
+      border-color: var(--primary-light);
+    }
+
+    input {
+      outline: none !important;
+      border: none !important;
+      width: 100%;
+    }
+  }
+}

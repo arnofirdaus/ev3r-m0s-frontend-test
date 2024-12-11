@@ -29,7 +29,7 @@ const ProductDetailPage = async (props: {
     <div className={styles.container}>
       <div>
         <Link href="/products" className={styles.backLink}>
-          <FaArrowLeftLong /> Back
+          <FaArrowLeftLong className={styles.icon} /> Back
         </Link>
         <h1 className={styles.heading}>{product.title}</h1>
       </div>
@@ -44,19 +44,23 @@ const ProductDetailPage = async (props: {
         <div className={styles.content}>
           <div className={styles.variance}>{product.variance}</div>
           <div className={styles.details}>
-            <p>
+            <p aria-label="rating of product">
               <strong>Rating:</strong> {product.rating}{" "}
               <FaStar className={styles.starIcon} />
             </p>
-            <p>
+            <p aria-label="stock of product">
               <strong>Stock:</strong> {product.stock}
             </p>
-            <p>
-              <strong>Sold:</strong> {product.sold}ad
+            <p aria-label="number sold of product">
+              <strong>Sold:</strong> {product.sold}
             </p>
           </div>
-          <p className={styles.price}>{currencyFormat(product.price)}</p>
-          <p className={styles.description}>{product.description}</p>
+          <p className={styles.price} aria-label="price of product">
+            {currencyFormat(product.price)}
+          </p>
+          <p className={styles.description} aria-label="description of product">
+            {product.description}
+          </p>
         </div>
       </div>
     </div>

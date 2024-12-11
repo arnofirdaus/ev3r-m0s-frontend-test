@@ -23,11 +23,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
       <div className={styles.content}>
         <div className={styles.container}>
-          <p className={styles.title}>{product.title}</p>
-          <div className={styles.variance}>{product.variance}</div>
+          <p className={styles.title} aria-label="title of product">
+            {product.title}
+          </p>
+          <div className={styles.variance} aria-label="variance of product">
+            {product.variance}
+          </div>
         </div>
         <div className={styles.price}>{currencyFormat(product.price)}</div>
-        <Link href={`products/${product.id}`} className={styles.button}>
+        <Link
+          href={`products/${product.id}`}
+          className={styles.button}
+          aria-label="view product"
+        >
           View Product
         </Link>
       </div>

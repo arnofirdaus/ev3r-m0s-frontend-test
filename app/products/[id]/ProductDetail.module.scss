@@ -16,7 +16,8 @@
 }
 
 .backLink {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   margin-top: 30px;
   color: var(--primary);
   text-decoration: none;
@@ -24,6 +25,14 @@
 
   &:hover {
     text-decoration: underline;
+
+    .icon {
+      transform: translateX(-5px);
+    }
+  }
+  .icon {
+    margin-right: 3px;
+    transition: transform 0.25s ease;
   }
 }
 

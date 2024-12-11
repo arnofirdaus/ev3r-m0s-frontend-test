@@ -4,11 +4,15 @@ import React, { useEffect, useState } from "react";
 import styles from "./Products.module.scss";
 import ProductCard from "./components/Card";
 import { ProductType } from "@/types/product";
-import CardHeader from "./components/CardHeader";
+import Header from "./components/Header";
+import { useProductStore } from "@/store/products";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const productSearch = useProductStore((state) => state.searchProduct);
 
   const fetchProducts = async () => {
     try {
@@ -17,6 +21,7 @@ const ProductsPage = () => {
       );
       const data = await res.json();
       setProducts(data);
+      setFilteredProducts(data);
       setLoading(false);
     } catch (error) {
       console.error("Failed to fetch products:", error);
@@ -28,18 +33,33 @@ const ProductsPage = () => {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    if (productSearch !== "") {
+      const filteredProducts = products.filter((product) =>
+        product.title.toLowerCase().includes(productSearch.toLowerCase())
+      );
+      setFilteredProducts(filteredProducts);
+    } else {
+      setFilteredProducts(products);
+    }
+  }, [productSearch]);
+
   return (
     <div className={styles.container}>
-      <CardHeader />
+      <Header />
       <div className={styles.grid}>
         {loading ? (
           <div className={styles.loader}>
             <p>Loading products...</p>
           </div>
-        ) : (
-          products.map((product) => (
+        ) : filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
             <ProductCard product={product} key={product.id} />
           ))
+        ) : (
+          <div className={styles.loader}>
+            <p>Not found...</p>
+          </div>
         )}
       </div>
     </div>
