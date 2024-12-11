@@ -6,6 +6,7 @@ import ProductCard from "./components/Card";
 import { ProductType } from "@/types/product";
 import Header from "./components/Header";
 import { useProductStore } from "@/store/products";
+import CardSkeleton from "./components/CardSkeleton";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -49,9 +50,9 @@ const ProductsPage = () => {
       <Header />
       <div className={styles.grid}>
         {loading ? (
-          <div className={styles.loader}>
-            <p>Loading products...</p>
-          </div>
+          Array.from({ length: 8 }).map((_, index) => (
+            <CardSkeleton key={index} />
+          ))
         ) : filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <ProductCard product={product} key={product.id} />
