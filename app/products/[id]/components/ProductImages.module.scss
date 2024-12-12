@@ -1,0 +1,39 @@
+.container {
+  //   width: 100%;
+}
+
+.image {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.containerThumbnail {
+  display: flex;
+  gap: 3px;
+  width: 300px;
+  overflow-x: auto;
+
+  .imageThumbnail {
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid white;
+
+    &:hover {
+      border: 2px solid var(--primary);
+    }
+  }
+
+  .selected {
+    border: 2px solid var(--primary);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .image {
+    width: 100%;
+  }
+
+  .containerThumbnail {
+    width: 100%;
+  }
+}

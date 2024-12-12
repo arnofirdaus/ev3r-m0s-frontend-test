@@ -1,10 +1,10 @@
 import { ProductType } from "@/types/product";
-import Image from "next/image";
 import React from "react";
 import styles from "./ProductDetail.module.scss";
 import Link from "next/link";
 import { currencyFormat } from "@/utils/formatter";
 import { FaArrowLeftLong, FaStar } from "react-icons/fa6";
+import ProductImages from "./components/ProductImages";
 
 async function fetchProductDetail(id: string): Promise<ProductType> {
   const res = await fetch(
@@ -34,13 +34,7 @@ const ProductDetailPage = async (props: {
         <h1 className={styles.heading}>{product.title}</h1>
       </div>
       <div className={styles.containerContent}>
-        <Image
-          src={product.images}
-          alt={product.title}
-          width={300}
-          height={300}
-          className={styles.image}
-        />
+        <ProductImages images={product.images} title={product.title} />
         <div className={styles.content}>
           <div className={styles.variance}>{product.variance}</div>
           <div className={styles.details}>

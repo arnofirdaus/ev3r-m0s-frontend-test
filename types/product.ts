@@ -3,7 +3,7 @@ export interface ProductType {
   id: number
 	title: string
   price: number
-  images: string
+  images: string[]
   variance: string
   description: string
   rating: number

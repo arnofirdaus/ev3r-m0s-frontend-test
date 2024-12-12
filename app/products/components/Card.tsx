@@ -14,7 +14,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <div className={styles.card}>
       <div className={styles.image}>
         <Image
-          src={product.images}
+          src={product.images[0]}
           alt={product.title}
           width={200}
           height={200}
