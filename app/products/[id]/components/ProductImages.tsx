@@ -30,7 +30,10 @@ const ProductImages: React.FC<ProductImagesType> = ({ images, title }) => {
           />
           <FaArrowRight
             className={`${styles.arrowIcon} ${styles.right}`}
-            onClick={() => moveImage("next")}
+            onClick={() =>
+              selectedImageIdx < images.length - 1 && moveImage("next")
+            }
+            aria-disabled={selectedImageIdx < images.length - 1}
           />
           <Image
             src={images[selectedImageIdx]}
