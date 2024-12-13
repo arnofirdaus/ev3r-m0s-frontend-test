@@ -2,9 +2,33 @@
   //   width: 100%;
 }
 
-.image {
-  border-radius: 8px;
-  object-fit: cover;
+.containerImage {
+  position: relative;
+  .arrowIcon {
+    position: absolute;
+    right: 0;
+    top: calc(50% - 10px);
+    background: rgba(255, 255, 255, 0.4);
+    padding: 1rem;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.4);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.6);
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+  .right {
+    right: 0;
+  }
+  .left {
+    left: 0;
+  }
+
+  .image {
+    border-radius: 8px;
+    object-fit: cover;
+  }
 }
 
 .containerThumbnail {
@@ -12,6 +36,20 @@
   gap: 3px;
   width: 300px;
   overflow-x: auto;
+
+  &:webkit-scrollbar {
+    width: 10px;
+  }
+
+  &:-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  &:-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  &:-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 
   .imageThumbnail {
     border-radius: 4px;

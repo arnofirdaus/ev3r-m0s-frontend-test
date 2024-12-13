@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./ProductImages.module.scss";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 interface ProductImagesType {
   images: string[];
@@ -12,15 +13,34 @@ interface ProductImagesType {
 const ProductImages: React.FC<ProductImagesType> = ({ images, title }) => {
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
 
+  const moveImage = (dir: "next" | "prev") => {
+    setSelectedImageIdx(
+      dir === "prev" ? selectedImageIdx - 1 : selectedImageIdx + 1
+    );
+  };
+
   return (
     <div className={styles.container}>
-      <Image
-        src={images[selectedImageIdx]}
-        alt={title}
-        width={300}
-        height={300}
-        className={styles.image}
-      />
+      <div>
+        <div className={styles.containerImage}>
+          <FaArrowLeft
+            className={`${styles.arrowIcon} ${styles.left}`}
+            onClick={() => selectedImageIdx > 0 && moveImage("prev")}
+            aria-disabled={selectedImageIdx > 0}
+          />
+          <FaArrowRight
+            className={`${styles.arrowIcon} ${styles.right}`}
+            onClick={() => moveImage("next")}
+          />
+          <Image
+            src={images[selectedImageIdx]}
+            alt={title}
+            width={300}
+            height={300}
+            className={styles.image}
+          />
+        </div>
+      </div>
       <div className={styles.containerThumbnail}>
         {images.map((image, i) => {
           return (
